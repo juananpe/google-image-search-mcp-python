@@ -54,4 +54,13 @@ logs/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
+
+# Images
+images/
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.webp 

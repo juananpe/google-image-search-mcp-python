@@ -23,7 +23,7 @@ A Python-based MCP (Model Context Protocol) server that provides tools for searc
    ```
 4. Install dependencies:
    ```bash
-   uv pip install -r requirements.txt
+   uv pip install -r pyproject.toml
    ```
 5. Create a `.env` file with your SerpAPI key:
    ```

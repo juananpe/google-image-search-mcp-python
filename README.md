@@ -13,23 +13,19 @@ A Python-based MCP (Model Context Protocol) server that provides tools for searc
 ## Installation
 
 1. Clone the repository
-2. Initialize the project with [uv](https://github.com/astral-sh/uv):
-   ```bash
-   uv init
-   ```
-3. Create a virtual environment:
+2. Create a virtual environment:
    ```bash
    uv venv
    ```
-4. Activate the virtual environment:
+3. Activate the virtual environment:
    ```bash
    source .venv/bin/activate
    ```
-5. Install dependencies:
+4. Install dependencies:
    ```bash
-   uv pip install -r requirements.txt
+   uv pip install -r pyproject.toml
    ```
-6. Create a `.env` file with your SerpAPI key:
+5. Create a `.env` file with your SerpAPI key:
    ```
    SERP_API_KEY=your_api_key_here
    ```

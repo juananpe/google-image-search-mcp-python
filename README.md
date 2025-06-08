@@ -42,6 +42,24 @@ Run the server:
 uv run main.py
 ```
 
+In Windows+Cursor (or Claude):
+
+```
+{
+  "mcpServers": {
+    "search-images": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\JuananPereira\\agentes\\google-image-search-mcp-python",
+        "run",
+        "main.py"
+      ]
+    }
+  }
+}
+```
+
 The server provides the following tools:
 
 1. `search_images_tool`: Search for images using Google Image Search

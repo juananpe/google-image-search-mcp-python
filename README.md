@@ -22,10 +22,15 @@ A Python-based MCP (Model Context Protocol) server that provides tools for searc
    source .venv/bin/activate
    ```
 4. Install dependencies:
+   (en Linux/macOS)
    ```bash
    uv pip install -r pyproject.toml
    ```
-5. Create a `.env` file with your SerpAPI key:
+   (en Windows)
+   ```powershell
+   .\.venv\Scripts\activate
+   ```
+6. Create a `.env` file with your SerpAPI key:
    ```
    SERP_API_KEY=your_api_key_here
    ```

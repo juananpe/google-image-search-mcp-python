@@ -94,6 +94,7 @@ First locate where your uv script is located. For example:
 Then apply the location of the uv script to cursor, windsurf, claude, etc
 ```
 {
+   "mcpServers": {
     "search-images": {
       "command": "/opt/homebrew/Caskroom/mambaforge/base/bin/uv",
       "args": [

@@ -42,8 +42,8 @@ def calculate_relevance_score(image: ImageSearchResult, criteria: str) -> float:
             score += 2
 
     # Higher resolution images get a better score
-    if image.get("width") and image.get("height"):
-        resolution = image["width"] * image["height"]
+    if image.get("original_width") and image.get("original_height"):
+        resolution = image["original_width"] * image["original_height"]
         if resolution > 1000000:
             score += 3  # > 1 megapixel
         elif resolution > 500000:

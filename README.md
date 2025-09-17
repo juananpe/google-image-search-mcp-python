@@ -13,34 +13,42 @@ A Python-based MCP (Model Context Protocol) server that provides tools for searc
 ## Installation
 
 1. Clone the repository
-2. Initialize the project with [uv](https://github.com/astral-sh/uv): (just once)
+2. Initialize the project with [uv](https://github.com/astral-sh/uv): _(just once)_
    ```bash
    uv init
    ```
-3. Create a virtual environment:
+3. Create a virtual environment: _(just once)_
    ```bash
    uv venv
    ```
 3. Activate the virtual environment:
+
+Linux/macOS:
+
    ```bash
    source .venv/bin/activate
    ```
-4. Install dependencies:
-   (en Linux/macOS)
+   Windows:
+
    ```powershell
    .venv\Scripts\activate
    ```
 
 5. Install dependencies:
+
+Linux/macOS:
+
    ```bash
    uv pip install -r pyproject.toml
    ```
-   (en Windows)
+
+Windows:
    ```powershell
    .\.venv\Scripts\activate
    uv pip install -r pyproject.toml
    ```
 6. Create a `.env` file with your SerpAPI key:
+(Get your key here: https://serpapi.com/dashboard)
    ```
    SERP_API_KEY=your_api_key_here
    ```
@@ -102,7 +110,13 @@ The server provides the following tools:
      - `search_results`: Array of image search results to analyze
      - `criteria`: Criteria for selecting the best images (e.g., 'professional', 'colorful', etc.)
 
-## Example
+## Examples
+
+### Prompt:
+
+   > use your search images tool to search for 5 images about "cute cats", analyze them and download the best 3 ones in ./gatitos/
+
+### Code
 
 ```python
 # Search for images

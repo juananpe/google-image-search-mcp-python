@@ -41,7 +41,6 @@ Linux/macOS:
 
 Windows:
    ```powershell
-   .\.venv\Scripts\activate
    uv pip install -r requirements.txt
    ```
 5. Create a `.env` file with your SerpAPI key:

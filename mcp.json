@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "playwright": {
+      "command": "C:\\nvm4w\\nodejs\\npx.cmd",
+      "args": [
+        "@playwright/mcp@latest"
+      ]
+    },
+    "search-images": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "C:\\Users\\granludo\\Documents\\GitHub\\google-image-search-mcp-python",
+        "run",
+        "main.py"
+      ]
+    }
+  }
+}

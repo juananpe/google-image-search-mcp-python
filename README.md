@@ -70,11 +70,11 @@ uv run main.py
 ```
 
 
-In Windows+Windsurf:
+In VSCode, add this MCP server configuration to your `mcp-servers.json` file:
 
 ```
 {
-  "mcpServers": {
+  "servers": {
     "search-images": {
       "command": "uv",
       "args": [

@@ -51,7 +51,13 @@ Windows:
 
 ## Usage
 
-Test the MCP server with inspector:
+You can either run the server:
+
+```bash
+uv run main.py
+```
+
+or test the MCP server with inspector:
 
 ```bash
 npx @modelcontextprotocol/inspector uv run main.py

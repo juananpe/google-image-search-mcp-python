@@ -88,6 +88,41 @@ In VSCode, add this MCP server configuration to your `mcp-servers.json` file:
 }
 ```
 
+On a Mac. 
+
+First locate where your uv script is located. For example:
+
+```
+# which uv
+/opt/homebrew/Caskroom/mambaforge/base/bin/uv
+```
+
+Then apply the location of the uv script to cursor, windsurf, claude, etc
+```
+{
+   "mcpServers": {
+    "search-images": {
+      "command": "/opt/homebrew/Caskroom/mambaforge/base/bin/uv",
+      "args": [
+        "--directory",
+        "/opt/agents/google-image-search-mcp-python",
+        "run",
+        "main.py"
+      ]
+    }
+  }
+}
+```
+
+
+
+
+
+
+
+
+
+
 The server provides the following tools:
 
 1. `search_images_tool`: Search for images using Google Image Search

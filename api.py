@@ -28,6 +28,30 @@ async def search_images(query: str, limit: int = 10) -> List[ImageSearchResult]:
         print(f"[Error] Failed to search images: {error}")
         raise
 
+async def download_image(image_url: str, output_path: str, filename: str) -> str:
+    """Download an image to the specified directory"""
+    print(f"[API] Downloading image from: {image_url}")
+
+    try:
+        # Create directory if it doesn't exist
+        output_dir = Path(output_path)
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        full_path = output_dir / filename
+
+        async with aiohttp.ClientSession() as session:
+            async with session.get(image_url) as response:
+                response.raise_for_status()
+                content = await response.read()
+
+                with open(full_path, "wb") as f:
+                    f.write(content)
+
+        print(f"[API] Image downloaded successfully to: {full_path}")
+        return str(full_path)
+    except Exception as error:
+        print(f"[Error] Failed to download image: {error}")
+        raise
 
 def calculate_relevance_score(image: ImageSearchResult, criteria: str) -> float:
     """Calculate relevance score for an image based on criteria"""
@@ -57,28 +81,3 @@ def calculate_relevance_score(image: ImageSearchResult, criteria: str) -> float:
 
     return score
 
-
-async def download_image(image_url: str, output_path: str, filename: str) -> str:
-    """Download an image to the specified directory"""
-    print(f"[API] Downloading image from: {image_url}")
-
-    try:
-        # Create directory if it doesn't exist
-        output_dir = Path(output_path)
-        output_dir.mkdir(parents=True, exist_ok=True)
-
-        full_path = output_dir / filename
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get(image_url) as response:
-                response.raise_for_status()
-                content = await response.read()
-
-                with open(full_path, "wb") as f:
-                    f.write(content)
-
-        print(f"[API] Image downloaded successfully to: {full_path}")
-        return str(full_path)
-    except Exception as error:
-        print(f"[Error] Failed to download image: {error}")
-        raise

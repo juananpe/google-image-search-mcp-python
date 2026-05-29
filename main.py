@@ -1,9 +1,7 @@
 import os
 from mcp.server.fastmcp import FastMCP
 from dotenv import load_dotenv
-from typing import List, Dict, Any
-from api import search_images, download_image, calculate_relevance_score
-from models import ImageSearchResult
+from api import search_images, download_image
 
 # Load environment variables
 load_dotenv()
@@ -18,7 +16,7 @@ mcp = FastMCP("google-image-search")
 
 
 @mcp.tool()
-async def search_images_tool(query: str, limit: int = 10) -> Dict[str, Any]:
+async def search_images_tool(query: str, limit: int = 10):
     """
     Search for images using Google Image Search
 
@@ -60,7 +58,7 @@ async def search_images_tool(query: str, limit: int = 10) -> Dict[str, Any]:
 
 
 @mcp.tool()
-async def download_image_tool(image_url: str, output_path: str, filename: str) -> Dict[str, Any]:
+async def download_image_tool(image_url: str, output_path: str, filename: str):
     """
     Download an image to a local directory
 
@@ -96,65 +94,6 @@ async def download_image_tool(image_url: str, output_path: str, filename: str) -
             ]
         }
 
-
-@mcp.tool()
-async def analyze_images_tool(search_results: List[Dict[str, Any]], criteria: str) -> Dict[str, Any]:
-    """
-    Analyze image search results to find the most relevant ones
-
-    Args:
-        search_results: Array of image search results to analyze
-        criteria: Criteria for selecting the best images (e.g., 'professional', 'colorful', etc.)
-
-    Returns:
-        Dictionary containing the analysis results
-    """
-    try:
-        print(f"[Tool] Executing analyze_images with criteria: '{criteria}'")
-
-        # Calculate relevance scores and add recommendations
-        analyzed_results = []
-        for img in search_results:
-            img_result = ImageSearchResult(**img)
-            img_result["relevanceScore"] = calculate_relevance_score(
-                img_result, criteria)
-            analyzed_results.append(img_result)
-
-        # Sort by relevance score
-        analyzed_results.sort(key=lambda x: x.get(
-            "relevanceScore", 0), reverse=True)
-
-        # Add recommendations based on ranking
-        for i, img in enumerate(analyzed_results):
-            img["recommendation"] = (
-                "Highly recommended" if i < 3
-                else "Recommended" if i < 6
-                else "Standard option"
-            )
-
-        return {
-            "content": [
-                {
-                    "type": "text",
-                    "text": f"Analyzed {len(analyzed_results)} images based on criteria: '{criteria}'"
-                },
-                {
-                    "type": "text",
-                    "text": str(analyzed_results)
-                }
-            ]
-        }
-    except Exception as error:
-        print(f"[Error] analyze_images failed: {error}")
-        return {
-            "isError": True,
-            "content": [
-                {
-                    "type": "text",
-                    "text": f"Failed to analyze images: {str(error)}"
-                }
-            ]
-        }
 
 if __name__ == "__main__":
     mcp.run(transport="stdio")

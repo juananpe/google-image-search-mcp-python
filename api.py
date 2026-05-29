@@ -28,6 +28,7 @@ async def search_images(query: str, limit: int = 10) -> List[ImageSearchResult]:
         print(f"[Error] Failed to search images: {error}")
         raise
 
+
 async def download_image(image_url: str, output_path: str, filename: str) -> str:
     """Download an image to the specified directory"""
     print(f"[API] Downloading image from: {image_url}")
@@ -52,32 +53,3 @@ async def download_image(image_url: str, output_path: str, filename: str) -> str
     except Exception as error:
         print(f"[Error] Failed to download image: {error}")
         raise
-
-def calculate_relevance_score(image: ImageSearchResult, criteria: str) -> float:
-    """Calculate relevance score for an image based on criteria"""
-    score = 0.0
-
-    # Check if title contains any of the criteria keywords
-    criteria_keywords = criteria.lower().split()
-    title_lower = image["title"].lower()
-
-    for keyword in criteria_keywords:
-        if keyword in title_lower:
-            score += 2
-
-    # Higher resolution images get a better score
-    if image.get("original_width") and image.get("original_height"):
-        resolution = image["original_width"] * image["original_height"]
-        if resolution > 1000000:
-            score += 3  # > 1 megapixel
-        elif resolution > 500000:
-            score += 2  # > 0.5 megapixel
-        else:
-            score += 1
-
-    # Non-product images might be better for certain use cases
-    if not image.get("is_product", False):
-        score += 1
-
-    return score
-

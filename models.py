@@ -12,8 +12,7 @@ class ImageSearchResult(TypedDict):
     size: Optional[str]
     original_width: Optional[int]
     original_height: Optional[int]
-    relevanceScore: Optional[float]
-    recommendation: Optional[str]
+
 
 
 class SearchMetadata(TypedDict):

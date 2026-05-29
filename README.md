@@ -1,14 +1,11 @@
 # Google Image Search MCP
 
-A Python-based MCP (Model Context Protocol) server that provides tools for searching, downloading, and analyzing images using Google Image Search.
+A Python-based MCP (Model Context Protocol) server that provides tools for searching and downloading images using Google Image Search.
 
 ## Features
 
 - Search for images using Google Image Search API
 - Download images to local storage
-- Analyze image search results based on custom criteria
-- Calculate relevance scores for images
-- Provide recommendations based on image quality and relevance
 
 ## Installation
 
@@ -18,33 +15,36 @@ A Python-based MCP (Model Context Protocol) server that provides tools for searc
    ```bash
    uv venv
    ```
-3. Activate the virtual environment:
+4. Activate the virtual environment:
 
 Linux/macOS:
 
-   ```bash
-   source .venv/bin/activate
-   ```
-   Windows:
+```bash
+source .venv/bin/activate
+```
 
-   ```powershell
-   .venv\Scripts\activate
-   ```
+Windows:
+
+```powershell
+.venv\Scripts\activate
+```
 
 4. Install dependencies:
 
 Linux/macOS:
 
-   ```bash
-   uv pip install -r requirements.txt
-   ```
+```bash
+uv pip install -r requirements.txt
+```
 
 Windows:
-   ```powershell
-   uv pip install -r requirements.txt
-   ```
+
+```powershell
+uv pip install -r requirements.txt
+```
+
 5. Create a `.env` file with your SerpAPI key:
-(Get your key here: https://serpapi.com/dashboard)
+   (Get your key here: https://serpapi.com/dashboard)
    ```
    SERP_API_KEY=your_api_key_here
    ```
@@ -69,7 +69,6 @@ Run the server:
 uv run main.py
 ```
 
-
 In VSCode, add this MCP server configuration to your `mcp-servers.json` file:
 
 ```
@@ -91,28 +90,21 @@ In VSCode, add this MCP server configuration to your `mcp-servers.json` file:
 The server provides the following tools:
 
 1. `search_images_tool`: Search for images using Google Image Search
-
    - Parameters:
      - `query`: The search query for finding images
      - `limit`: Maximum number of results to return (default: 10)
 
 2. `download_image_tool`: Download an image to a local directory
-
    - Parameters:
      - `image_url`: URL of the image to download
      - `output_path`: Directory path where the image should be saved
      - `filename`: Filename for the downloaded image (including extension)
 
-3. `analyze_images_tool`: Analyze image search results to find the most relevant ones
-   - Parameters:
-     - `search_results`: Array of image search results to analyze
-     - `criteria`: Criteria for selecting the best images (e.g., 'professional', 'colorful', etc.)
-
 ## Examples
 
 ### Prompt:
 
-   > use your search images tool to search for 5 images about "cute cats", analyze them and download the best 3 ones in ./gatitos/
+> use your search images tool to search for 5 images about "cute cats" and download the best one in ./gatitos/
 
 ### Code
 
@@ -125,12 +117,6 @@ saved_path = await download_image_tool(
     image_url="https://example.com/image.jpg",
     output_path="./images",
     filename="puppy.jpg"
-)
-
-# Analyze search results
-analysis = await analyze_images_tool(
-    search_results=results,
-    criteria="high quality professional"
 )
 ```
 

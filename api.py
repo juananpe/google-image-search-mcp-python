@@ -2,7 +2,7 @@ import os
 import aiohttp
 from pathlib import Path
 from typing import List
-from models import ImageSearchResult, SearchResponse
+from models import ImageSearchResult
 
 
 async def search_images(query: str, limit: int = 10) -> List[ImageSearchResult]:
@@ -18,7 +18,7 @@ async def search_images(query: str, limit: int = 10) -> List[ImageSearchResult]:
             }
             async with session.get("https://serpapi.com/search", params=params) as response:
                 response.raise_for_status()
-                data: SearchResponse = await response.json()
+                data = await response.json()
 
                 if not data["images_results"]:
                     raise ValueError("No image results found")

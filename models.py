@@ -1,4 +1,4 @@
-from typing import List, Optional, TypedDict
+from typing import Optional, TypedDict
 
 
 class ImageSearchResult(TypedDict):
@@ -12,43 +12,3 @@ class ImageSearchResult(TypedDict):
     size: Optional[str]
     original_width: Optional[int]
     original_height: Optional[int]
-
-
-
-class SearchMetadata(TypedDict):
-    id: str
-    status: str
-    json_endpoint: str
-    created_at: str
-    processed_at: str
-    google_images_url: str
-    raw_html_file: str
-    total_time_taken: float
-
-
-class SearchParameters(TypedDict):
-    engine: str
-    q: str
-    google_domain: str
-    ijn: str
-    device: str
-
-
-class MenuItem(TypedDict):
-    position: int
-    title: str
-    link: str
-    serpapi_link: str
-
-
-class SearchInformation(TypedDict):
-    image_results_state: str
-    query_displayed: str
-    menu_items: List[MenuItem]
-
-
-class SearchResponse(TypedDict):
-    search_metadata: SearchMetadata
-    search_parameters: SearchParameters
-    search_information: SearchInformation
-    images_results: List[ImageSearchResult]
